@@ -54,6 +54,10 @@ app.post("/api/generate", async (req, res) => {
   }
 });
 
+app.get("/", (req, res) => {
+  res.json({ message: "SD3 Image Generator API", status: "running" });
+});
+
 app.get("/health", (req, res) => res.json({ status: "ok" }));
 
 app.listen(PORT, () => {

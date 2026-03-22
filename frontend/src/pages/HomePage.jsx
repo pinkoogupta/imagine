@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+
 const EXAMPLES = [
   "A lone samurai standing in a neon-lit cyberpunk alley at midnight",
   "Golden hour over a vast Saharan dune, hyper-realistic",
@@ -23,7 +25,7 @@ export default function HomePage() {
     setLoading(true);
 
     try {
-      const res = await fetch("/api/generate", {
+      const res = await fetch(`${API_BASE_URL}/api/generate`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ prompt: prompt.trim() }),
